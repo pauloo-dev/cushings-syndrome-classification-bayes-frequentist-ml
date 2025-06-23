@@ -1,0 +1,17 @@
+model{
+# samples
+for(i in 1:n1){
+y1[i] ~ dnorm(mu1, tau)
+}
+
+for(j in 1:n2){
+y2[j] ~ dnorm(mu2, tau)
+}
+
+# priors
+mu1 ~ dnorm(0, 0.0001)
+mu2 ~ dnorm(0,0.0001)
+sigma2 <- 1/tau
+mu1_mu2 <- mu1 - mu2
+tau ~ dgamma(0.001, 0.001)
+}
